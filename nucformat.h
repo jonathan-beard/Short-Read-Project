@@ -100,7 +100,7 @@ typedef struct Read{
    uint8_t        read_length;
    nuc_read_t     read[READ_ARRAY_LENGTH];
 #if (USEPHRED == 1)
-   score_t        read_score[READ_ARRAY_LENGTH];
+   score_t        read_score[NUMBER_OF_BASES_CUTOFF];
 #endif 
 }Read;
 
