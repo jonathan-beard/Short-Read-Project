@@ -82,16 +82,6 @@ typedef  uint64_t    nuc_k_t;
 typedef  uint8_t     score_t;
 #endif
 
-/* Read - used by parser to represent a read */
-typedef struct Read{
-   uint32_t       read_index;
-   uint8_t        read_length;
-   nuc_read_t     read[READ_ARRAY_LENGTH];
-#if (USEPHRED == 1)
-   score_t        read_score[READ_ARRAY_LENGTH];
-#endif 
-}Read;
-
 typedef READ_INDEX{
    /* set_delimiter - set high when this and everything 
     * till the next high set_delimiter is in this set
@@ -104,6 +94,17 @@ typedef READ_INDEX{
       read_index        :     31;
 }READ_INDEX;
 
+/* Read - used by parser to represent a read */
+typedef struct Read{
+   READ_INDEX     read_index;
+   uint8_t        read_length;
+   nuc_read_t     read[READ_ARRAY_LENGTH];
+#if (USEPHRED == 1)
+   score_t        read_score[READ_ARRAY_LENGTH];
+#endif 
+}Read;
+
+
 /* K - used by hash kernel to represent a hashed k_star sequence */
 typedef struct K{
    READ_INDEX     read_index;
@@ -111,5 +112,23 @@ typedef struct K{
    uint8_t        k_length;
    nuc_k_t        k_hash[K_LENGTH];
 }K;
+
+/* K_SMALL - output of sort kernel */
+typedef struct K_Small{
+   READ_INDEX     read_index;
+   uint8_t        k_offset;
+}K_SMALL;
+
+/* ReadMerged - output of merge block */
+typedef struct ReadMerged{
+   Read           read;
+   uint8_t        k_offset;
+}ReadMerged;
+
+/* ReadMatch - output of match block */
+typedef struct ReadMatch{
+   READ_INDEX     a;
+   READ_INDEX     b;
+}ReadMatch;
 
 #endif /* end nucformat.h */
