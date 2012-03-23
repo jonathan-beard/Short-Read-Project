@@ -92,9 +92,21 @@ typedef struct Read{
 #endif 
 }Read;
 
+typedef READ_INDEX{
+   /* set_delimiter - set high when this and everything 
+    * till the next high set_delimiter is in this set
+    * this should be set by the sort algorithm.  
+    */
+
+    /* read_index - self explanatory */
+   uint32_t
+      set_delimiter     :     1,
+      read_index        :     31;
+}READ_INDEX;
+
 /* K - used by hash kernel to represent a hashed k_star sequence */
 typedef struct K{
-   uint32_t       read_index;
+   READ_INDEX     read_index;
    uint8_t        k_offset;
    uint8_t        k_length;
    nuc_k_t        k_hash[K_LENGTH];
