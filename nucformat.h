@@ -63,17 +63,17 @@
 #define CHARTOFOUR(CHAR) (CHAR & 0x0f)
 
 /* list of four bit bases */
-#define 4A     1   
-#define 4C     3
-#define 4G     7
-#define 4T     4
-#define 4X     8
+#define A4     1   
+#define C4     3
+#define G4     7
+#define T4     4
+#define X4     8
 
 /* list of two bit bases */
-#define 2A     0 
-#define 2C     1
-#define 2G     2
-#define 2T     3
+#define A2     0 
+#define C2     1
+#define G2     2
+#define T2     3
 
 /* nucleotide vector types */
 typedef  uint64_t    nuc_read_t;
@@ -82,7 +82,7 @@ typedef  uint64_t    nuc_k_t;
 typedef  uint8_t     score_t;
 #endif
 
-typedef READ_INDEX{
+typedef struct READ_INDEX{
    /* set_delimiter - set high when this and everything 
     * till the next high set_delimiter is in this set
     * this should be set by the sort algorithm.  
