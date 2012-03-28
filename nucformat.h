@@ -131,4 +131,7 @@ typedef struct ReadMatch{
    READ_INDEX     b;
 }ReadMatch;
 
+#define READSTRUCTSIZE sizeof(Read)
+#define KSTRUCTSIZE    sizeof(K)
+
 #endif /* end nucformat.h */
