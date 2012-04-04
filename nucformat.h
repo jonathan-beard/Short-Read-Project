@@ -72,8 +72,8 @@
 /* list of two bit bases */
 #define A2     0 
 #define C2     1
-#define G2     2
-#define T2     3
+#define G2     3
+#define T2     2
 
 /* nucleotide vector types */
 typedef  uint64_t    nuc_read_t;
@@ -110,7 +110,7 @@ typedef struct K{
    READ_INDEX     read_index;
    uint8_t        k_offset;
    uint8_t        k_length;
-   nuc_k_t        k_hash[K_LENGTH];
+   nuc_k_t        k_hash;
 }K;
 
 /* K_SMALL - output of sort kernel */
