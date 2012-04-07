@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdint.h>
+#include <inttypes.h>
+
+#include "printU32.h"
+
+void ap_printU32_init(struct ap_printU32_data *block){
+   block->out = fopen(block->filename, "w");
+   if(block->out == NULL){
+      printf("ERROR creating output file\n");
+      exit(FAIL);
+   }
+}
+
+void ap_printU32_destroy(struct ap_printU32_data *block){
+}
+
+void ap_printU32_push(struct ap_printU32_data *block, int port, void *ptr, int count){
+#ifdef SLEEP 
+   usleep(10); //10us delay
+#endif
+   UNSIGNED32 *in = (UNSIGNED32*) ap_get_input_data(block,0);
+   int i;
+
+   for (i = 0; i < count; i++) {
+       fprintf(block->out, "%"PRIu32"\n", in[i]);
+   }
+
+   ap_release(block,0,count);
+}
+
+int ap_printU32_go(struct ap_printU32_data *block){
+   return (GOSTOP);
+}
+
+
+void ap_printU32_push_signal(struct ap_printU32_data *block, int port, int type, int value)
+{
+#ifdef DEBUG_SIG
+    printf("printU32 signal type %d on port %d\n", type, port);
+#endif
+}

@@ -1,0 +1,10 @@
+
+block printU32 {
+   input UNSIGNED32 x0;
+   config STRING filename = "ap_results.txt";
+};
+
+platform C {
+   impl printU32 (base="printU32");
+};
+

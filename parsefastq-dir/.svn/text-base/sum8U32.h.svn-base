@@ -1,0 +1,27 @@
+#ifndef __X_h__
+#include "X.h"
+#endif
+
+#ifndef APMORE
+#define APMORE 0
+#endif
+
+#ifndef APSTOP
+#define APSTOP 1
+#endif
+
+#if (__AVX__ == 1)
+typedef int VECTORINT __attribute__((vector_size(16)));
+#elif  (__SSE4_1__ == 1)
+typedef int VECTORINT __attribute__((vector_size(32)));
+#else
+typedef int VECTORINT;
+#endif
+
+struct ap_sum8U32_data {};
+
+void ap_sum8U32_init(struct ap_sum8U32_data *block);
+void ap_sum8U32_destroy(struct ap_sum8U32_data *block);
+void ap_sum8U32_push(struct ap_sum8U32_data *block, int port, void *ptr, int count);
+int ap_sum8U32_go(struct ap_sum8U32_data *block);
+void ap_sum8U32_push_signal(struct ap_sum8U32_data *block, int port, int type, int value);

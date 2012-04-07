@@ -1,0 +1,8 @@
+block sum8U32{
+   input UNSIGNED32 x0;
+   input UNSIGNED32 x1;
+   output UNSIGNED32 y0;
+};
+platform C{
+   impl sum8U32 (base="sum8U32");
+};

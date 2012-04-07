@@ -1,0 +1,9 @@
+To compile you'll need:
+1) the auto-pipe/X-language compiler and glib > 2.0 
+2) compile the quickparselib first with appropriate options
+3) define a mapping and algorithm in the x language with appropriate 
+   dataflow edges.
+4) compile with ap build system.
+
+
+NOTE:  If using OS X, core affinity doesn't work.

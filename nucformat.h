@@ -58,7 +58,7 @@
  */
 
 /* convert 4 bit base to two bit base */
-#define FOURTOTWO(FOUR) (FOUR >> 2)
+#define FOURTOTWO(FOUR) (FOUR >> 1)
 /* convert char into four bit base */
 #define CHARTOFOUR(CHAR) (CHAR & 0x0f)
 
@@ -91,6 +91,7 @@ typedef struct READ_INDEX{
     /* read_index - self explanatory */
    uint32_t
       set_delimiter     :     1,
+      eod_delimiter     :     1,
       read_index        :     31;
 }READ_INDEX;
 
