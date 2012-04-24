@@ -25,4 +25,4 @@ void ap_parsefastq_push(struct ap_parsefastq_data *block, int port, void *ptr, i
 int ap_parsefastq_go(struct ap_parsefastq_data *block);
 void ap_parsefastq_push_signal(struct ap_parsefastq_data *block, int port, int type, int value);
 
-#endif /*END __PARSEFASTQ_H__
+#endif /* END __PARSEFASTQ_H__ */
