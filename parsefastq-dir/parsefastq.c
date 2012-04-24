@@ -31,7 +31,7 @@ int ap_parsefastq_go(struct ap_parsefastq_data *block)
    if(block->num_reads_remaining > 0){
       const int max_zero = (ap_get_max_send(block,0) / READSTRUCTSIZE);
       const int max_one  = (ap_get_max_send(block,1) / READSTRUCTSIZE);
-      int max = min(max_one,max_two);
+      int max = min(max_zero,max_one);
       if(max > block->num_reads_remaining)
          max = block->num_reads_remaining;
       const int num_bytes_to_send = max * READSTRUCTSIZE;
