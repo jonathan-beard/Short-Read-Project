@@ -37,15 +37,27 @@ void ap_kstarhash_push(struct ap_kstarhash_data *block, int port, void *ptr, int
    if(num_input_structs > 0){
       Read *read = (Read*)ptr;
       const int num_hashes = read->read_length - K_LENGTH;
+#if(0)
+      /* here's what we allocated before */
       const int num_hash_bytes = (num_hashes * KSTRUCTSIZE);
-      K *k = ap_allocate(block,0,num_hash_bytes);
+      K *k = (K*)  ap_allocate(block,0,num_hash_bytes);
+#else
+      /* here's what we'll change it to, each hash is an array of UNSIGEND8's */
+      K *k = (K*)  ap_allocate(block,0,num_hashes);
+#endif
       int i;
       for(i = 0; i <= num_hashes; k++,i++)
       {
          copy_info_to_k(read,k,i);
          k->k_hash = make_hash(read,i);
       }
+#if(0)
+      /* again, here's what we sent before...i.e. numbef of bytes */
       ap_send(block,0,num_hash_bytes);
+#else
+      /* here's what we'll send now */
+      ap_send(block,0,num_hashes);
+#endif
       ap_release(block,0,READSTRUCTSIZE);
    }
 };
