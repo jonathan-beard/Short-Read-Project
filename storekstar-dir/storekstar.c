@@ -41,13 +41,13 @@ void ap_storekstar_push(struct ap_storekstar_data *block, int port, void *ptr, i
       ap_release(block,0,(num_k_star * KSTRUCTSIZE));
    }
 #else /* look at binary */   
-   fwrite(ptr,sizeof(uint8_t),count,block->out);
+   fwrite(ptr,sizeof(uint8_t),count * KSTRUCTSIZE,block->out);
    ap_release(block,0,count);
 #endif
 }
 
 int ap_storekstar_go(struct ap_storekstar_data *block){
-   return (GOSTOP);
+   return (APSTOP);
 }
 
 

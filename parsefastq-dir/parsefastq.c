@@ -8,6 +8,13 @@
 #include "quickparse.h"
 #include "parsefastq.h"
 
+#ifndef min
+#define min(a,b) ( a < b ? a : b)
+#endif
+
+#ifndef max
+#define max(a,b) (a > b ? a : b)
+#endif
 
 
 void ap_parsefastq_init(struct ap_parsefastq_data *block)

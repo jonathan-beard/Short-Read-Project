@@ -1,6 +1,9 @@
+#ifndef KSTRUCTSIZE
+#define KSTRUCTSIZE 14
+#endif
 
 block storekstar {
-   input  UNSIGNED8 x0;
+   input  array<UNSIGNED8>[KSTRUCTSIZE] x0;
    config STRING filename = "kstar_out.dat";
 };
 

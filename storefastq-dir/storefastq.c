@@ -57,7 +57,7 @@ void ap_storefastq_push(struct ap_storefastq_data *block, int port, void *ptr, i
 }
 
 int ap_storefastq_go(struct ap_storefastq_data *block){
-   return (GOSTOP);
+   return (APSTOP);
 }
 
 

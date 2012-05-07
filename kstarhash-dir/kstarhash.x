@@ -1,4 +1,6 @@
-#include "nucformat.h"
+#ifndef KSTRUCTSIZE
+#define KSTRUCTSIZE 14 
+#endif
 
 block kstarhash{
    input    UNSIGNED8 x0;

@@ -4,7 +4,6 @@
 
 #ifndef __NUCFORMAT_H__
 #define __NUCFORMAT_H__ 1
-
 #include <stdint.h> 
 
 #if (DEBUG == 1)
